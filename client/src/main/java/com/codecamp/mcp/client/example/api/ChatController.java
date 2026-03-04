@@ -1,5 +1,7 @@
-package com.codecamp.mcp.client.example;
+package com.codecamp.mcp.client.example.api;
 
+import com.codecamp.mcp.client.example.service.DocumentService;
+import com.codecamp.mcp.client.example.service.Documents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
@@ -33,7 +35,7 @@ public class ChatController {
         Documents documents = chatClient.prompt()
                 .user("Welche Dokumente hat Robin?")
                 .call()
-                .entity(Documents.class);
+                .entity(Documents.class); // use extra type, because it's a list
         log.info("\n\nChat message as entity via Structured Output Converter: \n{}\n", documents);
         return documents;
     }

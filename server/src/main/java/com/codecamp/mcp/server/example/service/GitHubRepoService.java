@@ -1,4 +1,4 @@
-package com.codecamp.mcp.server.example;
+package com.codecamp.mcp.server.example.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

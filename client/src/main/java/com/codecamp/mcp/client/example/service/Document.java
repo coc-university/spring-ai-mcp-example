@@ -1,4 +1,4 @@
-package com.codecamp.mcp.client.example;
+package com.codecamp.mcp.client.example.service;
 
 public record Document(
         String owner,
