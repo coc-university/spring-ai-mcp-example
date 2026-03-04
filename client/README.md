@@ -22,8 +22,17 @@
 - server tools (mcp-server calling)
   - enter http://localhost:8080/chat/repos in the browser to trigger ai-chat with server tools via mcp
 
+# Concepts:
+
+- https://docs.spring.io/spring-ai/reference/api/chatclient.html
+- ChatClient: main entry point for all ai-interactions
+- Advisor: interceptor before and after ai-calls, can be used for logging, modifying input/output, etc.
+- Tool: a function that can be called by the ai to get data, either local or remote (via mcp)
+- Structured Output: convert ai-response into structured data (e.g. Java object) for easier processing
+- all implemented in ChatController
+
 # Tool Calling Architecture:
 
-- https://docs.spring.io/spring-ai/reference/concepts.html#concept-fc
+- https://docs.spring.io/spring-ai/reference/api/tools.html#_overview
 
 ![Bild](docs/Tool-Calling-Architecture.drawio.png)
