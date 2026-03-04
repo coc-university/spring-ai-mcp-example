@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: spring-ai-mcp-server-example
+  ai:
+    mcp:
+      server:
+        name: spring-ai-mcp-server-example
+        version: 0.0.1
+        protocol: streamable
+        stdio: false
