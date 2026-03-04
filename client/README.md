@@ -31,6 +31,14 @@
 - Structured Output: convert ai-response into structured data (e.g. Java object) for easier processing
 - all implemented in ChatController
 
+# Not Covered Concepts:
+
+- RAG: 
+  - via QuestionAnswerAdvisor (query in vector database)
+  - or manually (check of https://github.com/coc-university/spring-ai-rag-example)
+- Chat Memory: PromptChatMemoryAdvisor (retrieve the conversation history from the memory)
+- check out example: https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
+
 # Tool Calling Architecture:
 
 - https://docs.spring.io/spring-ai/reference/api/tools.html#_overview
