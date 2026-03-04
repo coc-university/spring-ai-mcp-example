@@ -1,5 +1,7 @@
 package com.codecamp.mcp.server.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import java.util.List;
 @Service
 public class GitHubRepoService {
 
+    private static final Logger log = LoggerFactory.getLogger(GitHubRepoService.class);
     private final List<GitHubRepo> repos = new ArrayList<>();
 
     public GitHubRepoService() {
@@ -23,11 +26,13 @@ public class GitHubRepoService {
 
     @McpTool(name = "get-all-github-repos", description = "Get a list of all github repos")
     public List<GitHubRepo> getAllRepos() {
+        log.info("return all repositories");
         return repos;
     }
 
     @McpTool(name = "get-github-repo-by-name", description = "Get a single repo by name")
     public GitHubRepo getRepo(String name) {
+        log.info("return repository with name: {}", name);
         return repos
                 .stream()
                 .filter(gitHubRepo -> gitHubRepo.name().equals(name))

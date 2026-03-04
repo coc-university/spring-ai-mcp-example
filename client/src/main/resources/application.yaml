@@ -1,0 +1,20 @@
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-ai-mcp-client-example
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+    mcp:
+      client:
+        name: spring-ai-mcp-client-example
+        version: 0.0.1
+        toolcallback:
+          enabled: true
+        streamable-http:
+          connections:
+            server:
+              url: http://localhost:8081/mcp
