@@ -16,14 +16,14 @@ public class ChatController {
     private static final Logger log = LoggerFactory.getLogger(ChatController.class);
     private final ChatClient chatClient;
 
-    public ChatController(ChatClient.Builder builder, ToolCallbackProvider tools) {
+    public ChatController(ChatClient.Builder builder, DocumentService clientTools, ToolCallbackProvider serverTools) {
 
         this.chatClient = builder
-                .defaultToolCallbacks(tools)
-                .defaultTools(new DocumentService())
+                .defaultTools(clientTools)
+                .defaultToolCallbacks(serverTools)
                 .build();
 
-        printTools(tools);
+        printTools(clientTools, serverTools);
     }
 
     @GetMapping("/chat/docs") // the ai-model should trigger the @Tool from the client (DocumentService)
@@ -46,7 +46,7 @@ public class ChatController {
         return message;
     }
 
-    private void printTools(ToolCallbackProvider serverTools) {
+    private void printTools(DocumentService clientTools, ToolCallbackProvider serverTools) {
 
         // print all registered tools of the mcp-server (GitHubRepoService)
         Arrays.stream(serverTools.getToolCallbacks()).forEach(toolCallback -> {
@@ -54,8 +54,7 @@ public class ChatController {
         });
 
         // print all registered tools of the client (DocumentService)
-        DocumentService documentService = new DocumentService();
-        Arrays.stream(ToolCallbacks.from(documentService)).forEach(toolCallback -> {
+        Arrays.stream(ToolCallbacks.from(clientTools)).forEach(toolCallback -> {
             log.info("\n\nClient Tool: \n{}\n", toolCallback.getToolDefinition());
         });
     }
