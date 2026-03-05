@@ -1,16 +1,20 @@
-package com.codecamp.mcp.client.example.service;
+package com.codecamp.mcp.client.example.tools;
 
+import com.codecamp.mcp.client.example.domain.Document;
+import com.codecamp.mcp.client.example.domain.Documents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Service
-public class DocumentService {
+@Component
+public class DocumentTools {
 
-    private static final Logger log = LoggerFactory.getLogger(DocumentService.class);
+    private static final Logger log = LoggerFactory.getLogger(DocumentTools.class);
+
+    // in a real application, you would probably fetch the documents from a database or an external service
     private final Documents docs = new Documents(List.of(
             new Document("Robin", "project-notes", "document with notes about the current project"),
             new Document("Daniel", "tec-notes", "document with notes about the tec stack we use in the project"),

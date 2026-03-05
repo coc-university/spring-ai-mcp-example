@@ -1,7 +1,7 @@
 package com.codecamp.mcp.client.example.api;
 
-import com.codecamp.mcp.client.example.service.DocumentService;
-import com.codecamp.mcp.client.example.service.Documents;
+import com.codecamp.mcp.client.example.tools.DocumentTools;
+import com.codecamp.mcp.client.example.domain.Documents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
@@ -19,7 +19,7 @@ public class ChatController {
     private static final Logger log = LoggerFactory.getLogger(ChatController.class);
     private final ChatClient chatClient;
 
-    public ChatController(ChatClient.Builder builder, DocumentService clientTools, ToolCallbackProvider serverTools) {
+    public ChatController(ChatClient.Builder builder, DocumentTools clientTools, ToolCallbackProvider serverTools) {
 
         this.chatClient = builder
                 .defaultTools(clientTools)
@@ -50,7 +50,7 @@ public class ChatController {
         return message;
     }
 
-    private void printTools(DocumentService clientTools, ToolCallbackProvider serverTools) {
+    private void printTools(DocumentTools clientTools, ToolCallbackProvider serverTools) {
 
         // print all registered tools of the mcp-server (GitHubRepoService)
         Arrays.stream(serverTools.getToolCallbacks()).forEach(toolCallback -> {

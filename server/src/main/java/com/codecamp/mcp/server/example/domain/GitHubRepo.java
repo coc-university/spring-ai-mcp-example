@@ -1,4 +1,4 @@
-package com.codecamp.mcp.server.example.service;
+package com.codecamp.mcp.server.example.domain;
 
 public record GitHubRepo(
         String owner,

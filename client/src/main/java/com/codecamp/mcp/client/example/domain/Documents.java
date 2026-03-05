@@ -1,4 +1,4 @@
-package com.codecamp.mcp.client.example.service;
+package com.codecamp.mcp.client.example.domain;
 
 import java.util.List;
 

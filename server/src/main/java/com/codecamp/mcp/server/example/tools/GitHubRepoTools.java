@@ -1,20 +1,23 @@
-package com.codecamp.mcp.server.example.service;
+package com.codecamp.mcp.server.example.tools;
 
+import com.codecamp.mcp.server.example.domain.GitHubRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springaicommunity.mcp.annotation.McpTool;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class GitHubRepoService {
+@Component
+public class GitHubRepoTools {
 
-    private static final Logger log = LoggerFactory.getLogger(GitHubRepoService.class);
+    private static final Logger log = LoggerFactory.getLogger(GitHubRepoTools.class);
+
+    // in a real application, you would probably fetch the documents from a database or an external service
     private final List<GitHubRepo> repos = new ArrayList<>();
 
-    public GitHubRepoService() {
+    public GitHubRepoTools() {
         repos.addAll(List.of(
                 new GitHubRepo("Robin","spring-app-template", "Template for building spring web apps"),
                 new GitHubRepo("Patrick","python_app_template","Template for building python apps"),
