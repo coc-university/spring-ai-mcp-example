@@ -1,14 +1,19 @@
 # Based on
 
-- Dan Vega: https://github.com/danvega/dvaas-client/tree/master
+- Dan Vega: 
+  - MCP-Client: https://github.com/danvega/dvaas-client/tree/master
+  - Chat-Client: https://github.com/danvega/spring-ai-workshop/tree/main/src/main/java/dev/danvega/workshop
 - Josh Long: https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/tree/main/assistant
-- Examples: https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol
+- Other Examples: 
+  - https://github.com/tzolov/playground-flight-booking
+  - https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol
 
 # Important Setup Steps
 
 - openai
   - spring-ai-starter-model-openai dependency in pom.xml
   - spring.ai.openai.api-key EnvVar in application.yml
+  - ADD YOUR KEY TO THE ENVIRONMENT!!!
 - client
   - spring-ai-starter-mcp-client dependency in pom.xml
   - spring.ai.mcp.client config in application.yml
@@ -34,10 +39,22 @@
 # Not Covered Concepts:
 
 - RAG: 
-  - via QuestionAnswerAdvisor (query in vector database)
-  - or manually (check of https://github.com/coc-university/spring-ai-rag-example)
-- Chat Memory: PromptChatMemoryAdvisor (retrieve the conversation history from the memory)
-- check out example: https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
+  - https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html
+  - query in vector database to find additional documents before calling the ai, to give it more context and improve the response
+  - for easy use-cases: QuestionAnswerAdvisor + SearchRequest
+  - for more complex use-cases: RetrievalAugmentationAdvisor 
+  - or manually, check of https://github.com/coc-university/spring-ai-rag-example
+  - examples:
+    - https://github.com/danvega/spring-ai-workshop/blob/main/src/main/java/dev/danvega/workshop/rag/ModelsController.java
+    - https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
+- Chat Memory: 
+  - https://docs.spring.io/spring-ai/reference/api/chat-memory.html
+  - store previous conversations for better context in future interactions
+  - can be in-memory (InMemoryChatMemoryRepository) or persistent (e.g. JdbcChatMemoryRepository)
+  - inject Advisor to ChatClient (e.g. MessageChatMemoryAdvisor)
+  - examples:
+    - https://github.com/danvega/spring-ai-workshop/blob/main/src/main/java/dev/danvega/workshop/memory/StatefulController.java
+    - https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
 
 # Tool Calling Architecture:
 

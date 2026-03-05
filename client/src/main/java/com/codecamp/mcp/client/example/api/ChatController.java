@@ -24,7 +24,7 @@ public class ChatController {
         this.chatClient = builder
                 .defaultTools(clientTools)
                 .defaultToolCallbacks(serverTools)
-                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .defaultAdvisors(new SimpleLoggerAdvisor()) // set log-level in app.yaml to see the advisor in action
                 .build();
 
         printTools(clientTools, serverTools);
