@@ -36,26 +36,6 @@
 - Structured Output: convert ai-response into structured data (e.g. Java object) for easier processing
 - all implemented in ChatController & ChatClientConfig
 
-# Not Covered Concepts:
-
-- RAG: 
-  - https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html
-  - query in vector database to find additional documents before calling the ai, to give it more context and improve the response
-  - for easy use-cases: QuestionAnswerAdvisor + SearchRequest
-  - for more complex use-cases: RetrievalAugmentationAdvisor 
-  - or manually, check of https://github.com/coc-university/spring-ai-rag-example
-  - examples:
-    - https://github.com/danvega/spring-ai-workshop/blob/main/src/main/java/dev/danvega/workshop/rag/ModelsController.java
-    - https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
-- Chat Memory: 
-  - https://docs.spring.io/spring-ai/reference/api/chat-memory.html
-  - store previous conversations for better context in future interactions
-  - can be in-memory (InMemoryChatMemoryRepository) or persistent (e.g. JdbcChatMemoryRepository)
-  - inject Advisor to ChatClient (e.g. MessageChatMemoryAdvisor)
-  - examples:
-    - https://github.com/danvega/spring-ai-workshop/blob/main/src/main/java/dev/danvega/workshop/memory/StatefulController.java
-    - https://github.com/joshlong-attic/2026-02-18-bootiful-dogumentary/blob/main/assistant/src/main/java/com/example/assistant/AssistantApplication.java
-
 # Tool Calling Architecture:
 
 - https://docs.spring.io/spring-ai/reference/api/tools.html#_overview
