@@ -34,7 +34,7 @@
 - Advisor: interceptor before and after ai-calls, can be used for logging, modifying input/output, etc.
 - Tool: a function that can be called by the ai to get data, either local or remote (via mcp)
 - Structured Output: convert ai-response into structured data (e.g. Java object) for easier processing
-- all implemented in ChatController
+- all implemented in ChatController & ChatClientConfig
 
 # Not Covered Concepts:
 
