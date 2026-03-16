@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class GitHubRepoTools {
+public class ServerGitHubRepoTools {
 
-    private static final Logger log = LoggerFactory.getLogger(GitHubRepoTools.class);
+    private static final Logger log = LoggerFactory.getLogger(ServerGitHubRepoTools.class);
 
     // in a real application, you would probably fetch the documents from a database or an external service
     private final List<GitHubRepo> repos = new ArrayList<>();
 
-    public GitHubRepoTools() {
+    public ServerGitHubRepoTools() {
         repos.addAll(List.of(
                 new GitHubRepo("Robin","spring-app-template", "Template for building spring web apps"),
                 new GitHubRepo("Patrick","python_app_template","Template for building python apps"),
@@ -27,15 +27,15 @@ public class GitHubRepoTools {
     }
 
 
-    @McpTool(name = "get-all-github-repos", description = "Get a list of all github repos")
+    @McpTool(name = "get-all-github-repos-from-mcp-server", description = "Get a list of all github repos")
     public List<GitHubRepo> getAllRepos() {
-        log.info("return all repositories");
+        log.info("return all repositories from mcp-server");
         return repos;
     }
 
-    @McpTool(name = "get-github-repo-by-name", description = "Get a single repo by name")
+    @McpTool(name = "get-github-repo-by-name-from-mcp-server", description = "Get a single repo by name")
     public GitHubRepo getRepo(String name) {
-        log.info("return repository with name: {}", name);
+        log.info("return repository from mcp-server with name: {}", name);
         return repos
                 .stream()
                 .filter(gitHubRepo -> gitHubRepo.name().equals(name))

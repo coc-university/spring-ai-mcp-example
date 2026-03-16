@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DocumentTools {
+public class ClientDocumentTools {
 
-    private static final Logger log = LoggerFactory.getLogger(DocumentTools.class);
+    private static final Logger log = LoggerFactory.getLogger(ClientDocumentTools.class);
 
     // in a real application, you would probably fetch the documents from a database or an external service
     private final Documents docs = new Documents(List.of(
@@ -22,15 +22,15 @@ public class DocumentTools {
             new Document("Robin", "spring-notes", "document with notes about spring framework")
     ));
 
-    @Tool(name = "get-all-documents", description = "Get a list of all documents")
+    @Tool(name = "get-all-documents-from-mcp-client", description = "Get a list of all documents")
     public Documents getAllDocuments() {
-        log.info("return all documents");
+        log.info("return all documents from mcp-client");
         return docs;
     }
 
-    @Tool(name = "get-document-by-name", description = "Get a single document by name")
+    @Tool(name = "get-document-by-name-from-mcp-client", description = "Get a single document by name")
     public Document getDocument(String name) {
-        log.info("return document with name: {}", name);
+        log.info("return document from mcp-client with name: {}", name);
         return docs.items()
                 .stream()
                 .filter(doc -> doc.name().equals(name))

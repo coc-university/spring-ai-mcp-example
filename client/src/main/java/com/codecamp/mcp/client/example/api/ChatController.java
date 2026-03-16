@@ -18,7 +18,7 @@ public class ChatController {
         this.chatClient = chatClient;
     }
 
-    @GetMapping("/chat/docs") // the ai-model should trigger the @Tool from the client (DocumentService)
+    @GetMapping("/chat/docs") // the ai-model should trigger the @Tool from the client (ClientDocumentTools)
     public Documents docs(@RequestParam(defaultValue = "Welche Dokumente hat Robin?")  String message)  {
         Documents documents = chatClient.prompt()
                 .user(message)
@@ -28,7 +28,7 @@ public class ChatController {
         return documents;
     }
 
-    @GetMapping("/chat/repos") // the ai-model should trigger the @McpTool from the server via mcp (GitHubRepoService)
+    @GetMapping("/chat/repos") // the ai-model should trigger the @McpTool from the server via mcp (ServerGitHubRepoTools)
     public String repos(@RequestParam(defaultValue = "Welche GitHub Repos hat Robin?")  String message) {
         String response = chatClient.prompt()
                 .user(message)
